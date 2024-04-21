@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        .mx-auto {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mx-auto img {
+            width: 600px;
+            height: 300px;
+            min-width: 100%;
+            object-fit: cover;
+            position: absolute;
+            transition: left 1s ease-in-out;
+        }
+
+        .rightArrow {
+            position: absolute;
+            bottom: 130px;
+            right: 0px;
+            background-color: rgba(168, 168, 168);
+            margin-right: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            opacity: 0.7;
+        }
+
+        .rightArrow:hover {
+            opacity: 1;
+        }
+
+        .leftArrow {
+            position: absolute;
+            bottom: 130px;
+            background-color: rgba(168, 168, 168);
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            opacity: 0.7;
+        }
+
+        .leftArrow:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-5">
+        <a class="navbar-brand  active" href="HomePage.html">HomePage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./Homework1.html">BMI計算</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework2.html">閏年判斷</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework3.html">九九乘法</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework4.html">溫度轉換</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework5.html">年齡計算</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework6.html">密碼驗證</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework7.html">元件關閉</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Homework9.html">記帳本</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">首頁輪播圖</h1>
+        <div class="mx-auto" style="width: 600px;height: 300px;">
+            <img id="img0" src="" alt="">
+            <img id="img1" src="" alt="">
+            <img id="img2" src="" alt="">
+            <img id="img3" src="" alt="">
+            <img id="img4" src="" alt="">
+            <!-- <img id="img5" src="" alt=""> -->
+            <div class="rightArrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="leftArrow"><i class="fa-solid fa-arrow-left"></i></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const data =
+            [{ "url": "https://www.kpopn.com/upload/fa639a8e1ae64ce8f2c0.jpg", "name": "Twice Fancy Cover" },
+            { "url": "https://cdn1.wishnote.tw/200/2018/04/24/200_91441_1524554375.jpeg", "name": "Twice What is Love MV" },
+            { "url": "https://img.ltn.com.tw/Upload/ent/page/800/2021/11/06/phpqJ2lIs.jpg", "name": "Twice Formula of Love Cover" },
+            { "url": "https://static.popdaily.com.tw/u/202109/4b573e45-9586-41e7-bd5d-c391bbfb2a60.jpg", "name": "Twice The Feels Cover" },
+            { "url": "https://thebiaslistcom.files.wordpress.com/2024/02/twice-i-got-you.jpeg", "name": "Twice I Got You Cover" }];
+        // console.log(data[0].url)
+        // console.log(data[0].name)
+        // console.log(data)
+
+        function doFirst() {
+            const img = [];
+            // const dataLength = data.length;
+
+            for (let i = 0; i < data.length; i++) {
+                img[i] = document.getElementById('img' + i);
+                // console.log(img[i])
+                img[i].src = data[i].url
+                img[i].style.left = i * 600 + 'px'
+            }
+
+            //第六個img為第一張圖
+            // let img5 = document.getElementById('img5')
+            // data.push({ url: data[0].url, name: data[0].name })
+            // img.push(img5)
+            // img5.src = data[5].url
+            // img5.style.left = '3000px'
+            // const dataLength = data.length;
+
+            //輪播圖片
+            function imgShift() {
+                if (img0.style.left == '-2400px') {
+                    // if (firstImgLeft <= 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        let currentShift = parseInt(img[i].style.left)
+                        // img[i].style.transition = `left 0s ease-in-out`
+                        img[i].style.left = (currentShift + 2400) + 'px'
+                    }
+                    // console.log(img0.style.left)
+
+                }
+                else {
+                    for (let i = 0; i < data.length; i++) {
+                        let currentShift = parseInt(img[i].style.left)
+                        img[i].style.left = (currentShift - 600) + 'px'
+                        // img[i].style.transition = `left 1s ease-in-out`
+                    }
+                }
+            }
+
+            //定時輪播
+            let intervalId = setInterval(imgShift, 3000)
+            // setInterval(imgShift, 3000)
+
+            //移上去停止
+            let container = document.querySelector('.container')
+            let images = container.querySelectorAll('img')
+            images.forEach((imgElement) => {
+                imgElement.addEventListener('mouseover', () => {
+                    clearInterval(intervalId)
+                    // console.log(img0.style.left)
+                })
+            })
+            //移出回復輪播
+            images.forEach((imgElement) => {
+                imgElement.addEventListener('mouseout', () => {
+                    intervalId = setInterval(imgShift, 3000)
+                })
+            })
+
+            //箭頭
+            let rightArrow = document.querySelector('.rightArrow')
+            let leftArrow = document.querySelector('.leftArrow')
+
+            rightArrow.addEventListener('click', () => {
+                clearInterval(intervalId);
+                imgShift();
+            })
+
+            leftArrow.addEventListener('click', () => {
+                if (img[0].style.left == '0px') {
+                    for (let i = 0; i < data.length; i++) {
+                        let currentShift = parseInt(img[i].style.left)
+                        img[i].style.left = (currentShift - 2400) + 'px'
+                    }
+                }
+                else {
+                    for (let i = 0; i < data.length; i++) {
+                        let currentShift = parseInt(img[i].style.left)
+                        img[i].style.left = (currentShift + 600) + 'px'
+                    }
+                }
+                clearInterval(intervalId)
+            })
+        }
+
+
+
+
+        window.addEventListener('load', doFirst)
+    </script>
+</body>
+
+</html>

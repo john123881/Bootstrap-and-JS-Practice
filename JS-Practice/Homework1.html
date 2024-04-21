@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BMI計算</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-5">
+            <a class="navbar-brand" href="HomePage.html">HomePage</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="./Homework1.html">BMI計算</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework2.html">閏年判斷</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework3.html">九九乘法</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework4.html">溫度轉換</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework5.html">年齡計算</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework6.html">密碼驗證</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework7.html">元件關閉</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Homework9.html">記帳本</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+            <form class="form-control" action="">
+                <legend>BMI計算</legend>
+                <label for="H_value">身高(公尺):</label>
+                <input class="form-control" id="H_value" type="text" name="tall" /><br />
+                <label for="W_value">體重(公斤):</label>
+                <input class="form-control" id="W_value" type="text" name="weight" /><br />
+                <div class="mb-3">
+                    BMI:
+                    <sapn class="BMI"></sapn>
+                </div>
+                <div class="mb-3">
+                    結果:
+                    <sapn class="result"></sapn>
+                </div>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const HeightInput = document.getElementById('H_value')
+            const WeightInput = document.getElementById('W_value')
+
+            HeightInput.addEventListener('input', calculateBMI)
+            WeightInput.addEventListener('input', calculateBMI)
+
+            function calculateBMI() {
+                const Height = parseFloat(HeightInput.value)
+                const Weight = parseFloat(WeightInput.value)
+
+                if (isNaN(Height) || isNaN(Weight) || Height <= 0 || Weight <= 0) {
+                    document.querySelector('.BMI').textContent = 'N/A'
+                    document.querySelector('.result').textContent = 'N/A'
+                } else {
+                    const BMI = Weight / (Height * Height)
+                    document.querySelector('.BMI').textContent = BMI.toFixed(2)
+
+                    if (BMI < 18.5) {
+                        document.querySelector('.result').textContent = '過輕'
+                    } else if (BMI >= 18.5 && BMI < 24) {
+                        document.querySelector('.result').textContent = '正常'
+                    } else if (BMI >= 24 && BMI < 27) {
+                        document.querySelector('.result').textContent = '過重'
+                    } else if (BMI >= 27 && BMI < 30) {
+                        document.querySelector('.result').textContent = '輕度肥胖'
+                    } else if (BMI >= 30 && BMI < 35) {
+                        document.querySelector('.result').textContent = '中度肥胖'
+                    } else if (BMI > 35) {
+                        document.querySelector('.result').textContent = '重度肥胖'
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
