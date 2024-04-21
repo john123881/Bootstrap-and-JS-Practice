@@ -1,0 +1,136 @@
+a {
+  border-bottom: 1px solid tomato;
+}
+
+b {
+  background-color: tomato;
+}
+
+nav {
+  width: 50%;
+  color: red;
+}
+nav ul {
+  font-size: 2em;
+}
+nav ul li {
+  border-bottom: 1px solid tomato;
+}
+
+.button {
+  border-radius: 5px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.element {
+  box-shadow: 2px 2px 4px #888;
+}
+
+.card {
+  box-shadow: 4px 4px 8px #555;
+}
+
+.sec-btn, .pri-btn {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.pri-btn {
+  background-color: orange;
+}
+
+.sec-btn {
+  background-color: tomato;
+}
+
+body {
+  font-size: 24px;
+}
+
+.button {
+  background-color: #333;
+  color: #fff;
+}
+
+.red-color {
+  background-color: red;
+}
+
+.blue-color {
+  background-color: blue;
+}
+
+.green-color {
+  background-color: green;
+}
+
+.black-color {
+  background-color: black;
+}
+
+.col-1 {
+  width: 8.3333333333%;
+}
+
+.col-2 {
+  width: 16.6666666667%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.3333333333%;
+}
+
+.col-5 {
+  width: 41.6666666667%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.3333333333%;
+}
+
+.col-8 {
+  width: 66.6666666667%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.3333333333%;
+}
+
+.col-11 {
+  width: 91.6666666667%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.item-1 {
+  width: 50px;
+}
+
+.item-2 {
+  width: 100px;
+}
+
+.item-3 {
+  width: 150px;
+}
+
+.item-4 {
+  width: 200px;
+}/*# sourceMappingURL=custom.css.map */

@@ -1,0 +1,15 @@
+.bg-texture {
+    background-image: url('public/bg-pattern-2021.jpg');
+}
+.badge {
+    font-size: 0.4em;
+}
+.cart-top {
+    transform: translate(-50%, -25%) !important;
+}
+.container-small {
+    max-width: 900px;
+}
+.datepicker {
+    padding: 0.375rem 0.75rem;
+}

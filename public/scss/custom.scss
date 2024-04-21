@@ -1,0 +1,100 @@
+$primary-color: tomato;
+
+
+// 自訂義
+a {
+  border-bottom: 1px solid $primary-color;
+}
+
+b {
+  background-color: $primary-color;
+}
+
+nav {
+  width: 50%;
+  color: red;
+  ul {
+    font-size: 2em;
+    li {
+      border-bottom: 1px solid $primary-color;
+    }
+  }
+}
+
+@mixin border-radius($r) {
+  border-radius: $r;
+}
+.button {
+  @include border-radius(5px);
+}
+.card {
+  @include border-radius(10px);
+}
+
+@mixin box-shadow($value: 2px 2px 4px #888) {
+  box-shadow: $value;
+} //帶入預設值$value
+.element {
+  @include box-shadow;
+}
+.card {
+  @include box-shadow(4px 4px 8px #555);
+} //複寫預設值
+
+//%繼承才有效果
+%button {
+  padding: 10px;
+  font-size: 16px;
+}
+.pri-btn {
+  @extend %button;
+  background-color: orange;
+}
+.sec-btn {
+  @extend %button;
+  background-color: $primary-color;
+}
+
+//計算
+$base-font-size: 16px;
+body {
+  font-size: $base-font-size * 1.5;
+}
+
+//@IF ELSE FOR EACH WHILE
+$theme: dark;
+.button {
+  @if $theme == light {
+    background-color: #fff;
+    color: #333;
+  } @else {
+    background-color: #333;
+    color: #fff;
+  }
+}
+
+//@each
+$colors: red, blue, green, black;
+@each $color in $colors {
+  .#{$color}-color {
+    background-color: $color;
+  }
+}
+
+//@for
+$columns: 12;
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    width: percentage($i / $columns);
+  }
+}
+
+//@while
+$i: 1;
+
+@while $i < 5 {
+  .item-#{$i} {
+    width: 50px * $i;
+  }
+  $i: $i + 1;
+}
